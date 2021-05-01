@@ -13,8 +13,13 @@ class Tan91Item(scrapy.Item):
     user_name = scrapy.Field()
     id = scrapy.Field()
 
+    att_url = scrapy.Field()
+    att_name = scrapy.Field()
+
     jpgs = scrapy.Field()
-    magnet = scrapy.Field()
+    blockcode = scrapy.Field()
+
+
 
     data = scrapy.Field()
     next_url = scrapy.Field()

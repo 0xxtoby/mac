@@ -7,7 +7,11 @@
 # useful for handling different item types with a single interface
 from itemadapter import ItemAdapter
 
+from tan91.spiders.data import DBteat
+
 
 class Tan91Pipeline:
     def process_item(self, item, spider):
+
+        DBteat.tiaokan_sql(item)
         return item

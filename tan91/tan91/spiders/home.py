@@ -12,15 +12,15 @@ class HomeSpider(scrapy.Spider):
 
     def start_requests(self):
         url = [
-            'https://www.sehuatang.net/search.php?mod=forum&searchid=70094&orderby=lastpost&ascdesc=desc&searchsubmit=yes&kw=%E6%B0%B8%E7%80%AC%E3%82%86%E3%81%84']
+            'https://www.sehuatang.net/search.php?mod=forum&searchid=102930&orderby=lastpost&ascdesc=desc&searchsubmit=yes&kw=%E6%B0%B8%E7%80%AC%E3%82%86%E3%81%84']
 
         yield scrapy.Request(url=url[0], callback=self.parse, meta={'i': 1, })
         # yield scrapy.Request(url=url[1], callback=self.parse,meta={'i':1,})
 
-        # for i in range(2, 4):
-        #     url_s = f'https://www.sehuatang.net/search.php?mod=forum&searchid=349210&orderby=lastpost&ascdesc=desc&searchsubmit=yes&page={i}'
-        #     yield scrapy.Request(url=url_s, callback=self.parse, meta={'i': i, })
-        #     break
+        for i in range(2, 6):
+            url_s = f'https://www.sehuatang.net/search.php?mod=forum&searchid=102930&orderby=lastpost&ascdesc=desc&searchsubmit=yes&page={i}'
+            yield scrapy.Request(url=url_s, callback=self.parse, meta={'i': i, })
+            break
 
     def parse(self, response):
         f = open(f'{IMAGES_STORE}/html//home//{response.meta["i"]}.html', 'wb')
@@ -30,49 +30,93 @@ class HomeSpider(scrapy.Spider):
         next_url = response.xpath('/html/body/div[5]/div/div/div[2]/ul/li/h3/a/@href').extract()
         print(next_url)
 
-        item = Tan91Item()
+
         for url in next_url:
             u = 'https://www.sehuatang.net/' + url
             id = re.findall('&tid=(.*?)&', url)[0]
             print(id)
-            item['id'] = id
-            item['next_url'] = u
 
-            yield scrapy.Request(url=u, callback=self.next_url, meta={'item': item})
-            break
+            yield scrapy.Request(url=u, callback=self.next_url, meta={'id':id,'next_url':u})
+
 
     def next_url(self, response):
-        f=open(f'{IMAGES_STORE}//html//next//{response.meta["item"]["id"]}.html','wb')
+        item = Tan91Item()
+
+        f=open(f'{IMAGES_STORE}//html//next//{response.meta["id"]}.html','wb')
         f.write(response.body)
         # print(response.body)
 
-        item = response.meta['item']
+        item['id']=response.meta['id']
+        item['next_url']=response.meta['next_url']
         try:
             name_data=response.xpath('//*[@id="thread_subject"]/text()')[0].extract()
             item['name'] = name_data
             print(name_data)
         except Exception as response:
             print('name读取错误')
+            item['name'] = ''
+
 
 
         try:
             data=response.xpath('//*[@class="t_f"]/text()').extract()
             zdata=''
+
             for d in data:
-                if d!='':
+                if d!='' and not d=='\n':
                     zdata=zdata+d
+
             print(zdata)
+            item['data']=zdata
         except Exception as response:
             print('data 错误')
+            item['data'] = ''
 
 
 
         try:
-            jpg_url=response.xpath('//*[@class="t_f"]//img/@file').extract()
+            jpgs=response.xpath('//*[@class="t_f"]//img/@file').extract()
 
-            print(jpg_url)
+            print(jpgs)
+            item['jpgs']=jpgs
         except Exception as response:
-            print('jpg_url 错误')
+            try:
+                jpgs = response.xpath('//*[@class="t_f"]//img/@src').extract()
+
+                print(jpgs)
+                item['jpgs'] = jpgs
+            except Exception as response:
+                print('无照片')
+                item['jpgs'] = ''
+
+        try:
+            bt=response.xpath('//*[@class="blockcode"]//li/text()')[0].extract()
+
+            print(bt)
+            item['blockcode']=bt
+        except Exception as response:
+            print('bt无')
+            item['blockcode'] = ''
+
+        try:
+            attum_url=response.xpath('//*[@class="attnm"]//a/@href')[0].extract()
+            attum_name=response.xpath('//*[@class="attnm"]//a/text()')[0].extract()
+
+            print(attum_name,attum_url)
+
+            item['att_url']=attum_url
+            item['att_name']=attum_name
+        except Exception as response:
+            print('附件 无')
+            item['att_url'] = ''
+            item['att_name'] = ''
+
+
+        yield  item
+
+
+
+
 
 
 
@@ -87,5 +131,5 @@ class HomeSpider(scrapy.Spider):
 
 
 if __name__ == '__main__':
-    cmdline.execute("scrapy crawl home  ".split())
+    cmdline.execute("scrapy crawl home".split())
 

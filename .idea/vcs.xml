@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/18少女团" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/_91tan" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/bcy" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/scrapy-redis" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/sv_18_py" vcs="Git" />
