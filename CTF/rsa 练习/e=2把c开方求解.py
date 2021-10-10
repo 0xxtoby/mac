@@ -1,0 +1,17 @@
+#!/usr/bin/python
+#coding:utf-8
+import gmpy2
+import libnum
+import codecs,binascii
+
+#已知
+from Crypto.Util.number import long_to_bytes
+
+c = 9217979941366220275377875095861710925207028551771520610387238734819759256223080175603032167658086669886661302962985046348865181740591251321966682848536331583243529
+e=2
+
+
+m = gmpy2.isqrt(c)
+m = int(m)
+print(m)
+print(long_to_bytes(m))
