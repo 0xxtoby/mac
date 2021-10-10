@@ -3,12 +3,16 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/18少女团" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/BaiduPanFilesTransfers" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/_91tan" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/bcy" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/rsa 练习/tool/rsa-wiener-attack" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/scrapy-redis" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/sv_18_py" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/tiaokan" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/tiaokan/tiaokan" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/util" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/util/BaiduYunTransfer" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/util/pyfactor" vcs="Git" />
   </component>
 </project>

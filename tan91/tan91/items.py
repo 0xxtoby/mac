@@ -18,6 +18,8 @@ class Tan91Item(scrapy.Item):
 
     jpgs = scrapy.Field()
     blockcode = scrapy.Field()
+    search = scrapy.Field()
+    html_data = scrapy.Field()
 
 
 
