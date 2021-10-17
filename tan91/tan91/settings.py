@@ -1,4 +1,4 @@
-# Scrapy settings for tan91 project
+# Scrapy settings for mac project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -7,17 +7,17 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'tan91'
+BOT_NAME = 'mac'
 
-SPIDER_MODULES = ['tan91.spiders']
-NEWSPIDER_MODULE = 'tan91.spiders'
+SPIDER_MODULES = ['mac.spiders']
+NEWSPIDER_MODULE = 'mac.spiders'
 
-IMAGES_STORE='/Users/oo/PycharmProjects/pythonProject3/tan91/tan91/spiders/data'
+IMAGES_STORE='/Users/oo/PycharmProjects/pythonProject3/mac/mac/spiders/data'
 
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'tan91 (+http://www.yourdomain.com)'
+#USER_AGENT = 'mac (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
 # ROBOTSTXT_OBEY = True
@@ -48,13 +48,13 @@ DEFAULT_REQUEST_HEADERS = {
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    'tan91.middlewares.Tan91SpiderMiddleware': 543,
+#    'mac.middlewares.Tan91SpiderMiddleware': 543,
 #}
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
-#    'tan91.middlewares.Tan91DownloaderMiddleware': 543,
+#    'mac.middlewares.Tan91DownloaderMiddleware': 543,
 #}
 
 # Enable or disable extensions
@@ -66,7 +66,7 @@ DEFAULT_REQUEST_HEADERS = {
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-   'tan91.pipelines.Tan91Pipeline': 300,
+   'mac.pipelines.Tan91Pipeline': 300,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)

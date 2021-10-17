@@ -15,7 +15,8 @@ web=Chrome(options=opt)
 web.get('https://kyfw.12306.cn/otn/resources/login.html')
 
 time.sleep(2)
-web.find_element_by_xpath('/html/body/div[2]/div[2]/ul/li[2]/a').click()
+web.find_element_by_xpath('//*[@id="toolbar_Div"]/div[2]/div[2]/ul/li[2]/a').click()
+# //*[@id="toolbar_Div"]/div[2]/div[2]/ul/li[2]/a
 
 time.sleep(3)
 
@@ -41,6 +42,12 @@ web.find_element_by_xpath('//*[@id="J-password"]').send_keys('15924275250nn')
 web.find_element_by_xpath('//*[@id="J-login"]').click()
 
 time.sleep(5)
+
+
+
+
+
+
 huakuai=web.find_element_by_xpath('//*[@id="nc_1__scale_text"]/span')
 ActionChains(web).drag_and_drop_by_offset(huakuai,300,0).perform()
 
