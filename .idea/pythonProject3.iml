@@ -13,7 +13,7 @@
       <sourceFolder url="file://$MODULE_DIR$/CTF/sql注入" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CTF/rsa 练习/tool" isTestSource="false" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 3.7" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.7 (mac)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="PackageRequirementsSettings">
